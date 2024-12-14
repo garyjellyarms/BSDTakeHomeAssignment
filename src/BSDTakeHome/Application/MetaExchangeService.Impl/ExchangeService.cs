@@ -18,6 +18,13 @@ namespace MetaExchangeService.Impl
 
     public ProcessedOrderDTO? FillOrder(decimal amount, OrderTypeEnum orderType)
     {
+      if (amount <= 0)
+      {
+        return new ProcessedOrderDTO
+        {
+          ProcessedOrderType = ProcessedOrderTypeEnum.UnfillableOrder,
+        };
+      }
       if (orderType == OrderTypeEnum.Sell)
       {
         var result = ProcessSellOrder(amount);

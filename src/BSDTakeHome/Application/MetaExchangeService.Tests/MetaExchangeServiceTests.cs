@@ -135,6 +135,26 @@ namespace MetaExchangeService.Tests
       Assert.AreEqual(0, result.Subtransactions.Count);
     }
 
+    [TestMethod]
+    public void FillOrder_NegativeAmount()
+    {
+      var result = exchangeService!.FillOrder(-1, OrderTypeEnum.Sell);
+
+      Assert.IsNotNull(result);
+      Assert.AreEqual(0, result.Subtransactions.Count);
+      Assert.AreEqual(ProcessedOrderTypeEnum.UnfillableOrder, result.ProcessedOrderType);
+    }
+
+    [TestMethod]
+    public void FillOrder_AmountEqualZero()
+    {
+      var result = exchangeService!.FillOrder(0, OrderTypeEnum.Sell);
+
+      Assert.IsNotNull(result);
+      Assert.AreEqual(0, result.Subtransactions.Count);
+      Assert.AreEqual(ProcessedOrderTypeEnum.UnfillableOrder, result.ProcessedOrderType);
+    }
+
 
     #endregion
 
