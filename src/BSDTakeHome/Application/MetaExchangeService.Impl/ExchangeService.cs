@@ -85,6 +85,8 @@ namespace MetaExchangeService.Impl
             Exchange = bid.Order.ExchangeName,
             OrderType = OrderTypeEnum.Sell
           });
+          exchangeConstraint!.CurrentEURAmount += bid.Order.Amount * bid.Order.Price;
+          amount -= bid.Order.Amount;
         }
       }
 

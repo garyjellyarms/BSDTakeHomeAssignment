@@ -23,9 +23,11 @@ namespace MetaExchangeService.Tests
     [TestMethod]
     public void FillOrder_Buys_Success_Test()
     {
-      var result = exchangeService!.FillOrder(2, OrderTypeEnum.Buy);
+      int btcAmountToFill = 2;
+      var result = exchangeService!.FillOrder(btcAmountToFill, OrderTypeEnum.Buy);
 
       Assert.IsNotNull(result);
+      Assert.AreEqual(result.Subtransactions.Sum(x => x.Amount), btcAmountToFill);
       Assert.AreEqual(ProcessedOrderTypeEnum.Success, result.ProcessedOrderType);
 
       CheckTransactionOrderStatuses(OrderTypeEnum.Buy, result.Subtransactions);
@@ -34,25 +36,30 @@ namespace MetaExchangeService.Tests
     [TestMethod]
     public void FillOrder_Sell_Success_Test()
     {
-      var result = exchangeService!.FillOrder(2, OrderTypeEnum.Sell);
+      int btcAmountToFill = 2;
+
+      var result = exchangeService!.FillOrder(btcAmountToFill, OrderTypeEnum.Sell);
 
       Assert.IsNotNull(result);
       Assert.AreEqual(ProcessedOrderTypeEnum.Success, result.ProcessedOrderType);
+      Assert.AreEqual(result.Subtransactions.Sum(x => x.Amount), btcAmountToFill);
       CheckTransactionOrderStatuses(OrderTypeEnum.Sell, result.Subtransactions);
     }
 
     [TestMethod]
     public void FillOrder_Buy_OnlyOneExchange_Test()
     {
+      int btcAmountToFill = 2;
       exchangeService!._dataParser.Exchanges[0].OrderBook.Asks.ForEach(x =>
       {
         x.Order.Price = 5000;
       });
 
+      var result = exchangeService!.FillOrder(btcAmountToFill, OrderTypeEnum.Buy);
 
-      var result = exchangeService!.FillOrder(2, OrderTypeEnum.Buy);
       Assert.IsNotNull(result);
       Assert.AreEqual(ProcessedOrderTypeEnum.Success, result.ProcessedOrderType);
+      Assert.AreEqual(result.Subtransactions.Sum(x => x.Amount), btcAmountToFill);
       Assert.AreEqual(CheckNumberOfDifferentExchanges(result.Subtransactions), 1);
     }
 
