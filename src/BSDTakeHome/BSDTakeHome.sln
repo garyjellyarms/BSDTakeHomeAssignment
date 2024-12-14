@@ -11,11 +11,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MetaExchangeService.Impl", "Application\MetaExchangeService.Impl\MetaExchangeService.Impl.csproj", "{C230B640-6204-4957-845E-ADF377867F21}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MetaExchangeService.Interfaces", "Application\MetaExchange.Interfaces\MetaExchangeService.Interfaces.csproj", "{AC045F77-056B-4C6B-ACD4-1D511BC649D9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MetaExchangeService.Interfaces", "Application\MetaExchangeService.Interfaces\MetaExchangeService.Interfaces.csproj", "{AC045F77-056B-4C6B-ACD4-1D511BC649D9}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{5F4E2F08-3089-4ACF-818C-2027CD2080F8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderBookDataAdapter", "Domain\OrderBookDataAdapter\OrderBookDataAdapter.csproj", "{B8FD4656-B192-4CAA-8701-E49B913EC5D7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrderBookDataAdapter", "Domain\OrderBookDataAdapter\OrderBookDataAdapter.csproj", "{B8FD4656-B192-4CAA-8701-E49B913EC5D7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MetaExchangeConsoleApp", "Presentation\MetaExchangeConsoleApp\MetaExchangeConsoleApp.csproj", "{69A23BD4-F20A-487E-96CE-F86DF5784996}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MetaExchangeService.Tests", "Application\MetaExchangeService.Tests\MetaExchangeService.Tests.csproj", "{DBAB2398-2BD8-4645-B9E1-BFCA1581CC5B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +43,14 @@ Global
 		{B8FD4656-B192-4CAA-8701-E49B913EC5D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B8FD4656-B192-4CAA-8701-E49B913EC5D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B8FD4656-B192-4CAA-8701-E49B913EC5D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{69A23BD4-F20A-487E-96CE-F86DF5784996}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69A23BD4-F20A-487E-96CE-F86DF5784996}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69A23BD4-F20A-487E-96CE-F86DF5784996}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69A23BD4-F20A-487E-96CE-F86DF5784996}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DBAB2398-2BD8-4645-B9E1-BFCA1581CC5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DBAB2398-2BD8-4645-B9E1-BFCA1581CC5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DBAB2398-2BD8-4645-B9E1-BFCA1581CC5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DBAB2398-2BD8-4645-B9E1-BFCA1581CC5B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -48,6 +60,8 @@ Global
 		{C230B640-6204-4957-845E-ADF377867F21} = {CC107CA5-8D8B-427A-A7D4-FFD18A7628C5}
 		{AC045F77-056B-4C6B-ACD4-1D511BC649D9} = {CC107CA5-8D8B-427A-A7D4-FFD18A7628C5}
 		{B8FD4656-B192-4CAA-8701-E49B913EC5D7} = {5F4E2F08-3089-4ACF-818C-2027CD2080F8}
+		{69A23BD4-F20A-487E-96CE-F86DF5784996} = {41B89ED6-A098-4B63-BCA8-21D2B63C9A94}
+		{DBAB2398-2BD8-4645-B9E1-BFCA1581CC5B} = {CC107CA5-8D8B-427A-A7D4-FFD18A7628C5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8BF32A62-6DE1-4417-AFEB-D4DD7587CC43}

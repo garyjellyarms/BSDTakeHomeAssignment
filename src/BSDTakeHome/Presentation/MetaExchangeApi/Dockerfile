@@ -9,15 +9,18 @@ EXPOSE 8081
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["MetaExchangeApi/MetaExchangeApi.csproj", "MetaExchangeApi/"]
-RUN dotnet restore "./MetaExchangeApi/MetaExchangeApi.csproj"
+COPY ["../../Domain/OrderBookDataAdapter/OrderBookDataAdapter.csproj", "Domain/OrderBookDataAdapter/"]
+COPY ["../../Application/MetaExchangeService.Interfaces/MetaExchangeService.Interfaces.csproj", "Application/MetaExchangeService.Interfaces/"]
+COPY ["../../Application/MetaExchangeService.Impl/MetaExchangeService.Impl.csproj", "Application/MetaExchangeService.Impl/"]
+COPY ["./Presentation/MetaExchangeApi/MetaExchangeApi.csproj", "Presentation/MetaExchangeApi/"]
+RUN dotnet restore "./Presentation/MetaExchangeApi/MetaExchangeApi.csproj"
 COPY . .
-WORKDIR "/src/MetaExchangeApi"
+WORKDIR "/src/Presentation/MetaExchangeApi"
 RUN dotnet build "./MetaExchangeApi.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 FROM build AS publish
 ARG BUILD_CONFIGURATION=Release
-RUN dotnet publish "./MetaExchangeApi.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "./MetaExchangeApi.csproj" -c $BUILD_CONFIGURATION -o /app/publish  /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app
